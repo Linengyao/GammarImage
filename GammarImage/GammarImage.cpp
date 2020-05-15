@@ -27,16 +27,18 @@ void Gammar(Mat srcMat)
 		{
 			//------开始处理每个像素---------
 
-			srcMat.at<uchar>(j, i) = Lut[srcMat.at<uchar>(j, i)];
+			srcMat.at<Vec3b>(j, i)[0] = Lut[srcMat.at<Vec3b>(j, i)[0]];
+			srcMat.at<Vec3b>(j, i)[1] = Lut[srcMat.at<Vec3b>(j, i)[1]];
+			srcMat.at<Vec3b>(j, i)[2] = Lut[srcMat.at<Vec3b>(j, i)[2]];
 		}//单行处理结束
 	}
 
 }
 int main()
 {
-	cv::Mat srcMat = imread("E:\\课程\\大二下\\数字图像处理\\gtest.jpg", 0);
+	cv::Mat srcMat = imread("E:\\课程\\大二下\\数字图像处理\\gtest.jpg");
 
-	LutBuild(0.3);
+	LutBuild(0.44);
 	Gammar(srcMat);
 	imshow("srcMat", srcMat);
 
